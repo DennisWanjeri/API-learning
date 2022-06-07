@@ -16,6 +16,7 @@ class PostCreate(PostModel):
 class PostResponse(PostModel):
     id: int
     created_at: datetime
+    user_id: int
 
     class Config:
         orm_mode = True
