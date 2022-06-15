@@ -2,11 +2,17 @@ from .. import models, schemas, utils
 from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from .. database import get_db
+import requests
 
 router = APIRouter(
     prefix="/users",
     tags=['Users']
 )
+
+url = "https://jsonplaceholder.typicode.com/users"
+
+res = requests.get(url).json()
+print(res)
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserOut)
